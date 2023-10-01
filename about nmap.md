@@ -165,3 +165,14 @@ This means that, whilst one of the first three scans are likely to be your go-to
 
 In terms of network scanning, we will also look briefly at ICMP (or "ping") scanning.
 
+
+**TCP Connect Scans**
+
+To understand TCP Connect scans (```-sT```), it's important that you're comfortable with the TCP three-way handshake. 
+If this term is new to you then completing Introductory Networking before continuing would be advisable.
+
+As a brief recap, the three-way handshake consists of three stages. 
+First the connecting terminal (our attacking machine, in this instance) sends a TCP request to the target server with the SYN flag set. 
+The server then acknowledges this packet with a TCP response containing the SYN flag, as well as the ACK flag. 
+Finally, our terminal completes the handshake by sending a TCP request with the ACK flag set.
+
