@@ -176,3 +176,52 @@ First the connecting terminal (our attacking machine, in this instance) sends a 
 The server then acknowledges this packet with a TCP response containing the SYN flag, as well as the ACK flag. 
 Finally, our terminal completes the handshake by sending a TCP request with the ACK flag set.
 
+![image-2](https://github.com/schoto/THM-Nmap/assets/69323411/967f63a6-c2e7-46d6-9746-f34125ff2fa6)
+![ngzBWID](https://github.com/schoto/THM-Nmap/assets/69323411/afc0654f-ad98-4ece-aa23-47bab61344a0)
+
+This is one of the fundamental principles of TCP/IP networking, but how does it relate to Nmap?
+
+Well, as the name suggests, a TCP Connect scan works by performing the three-way handshake with each target port in turn. 
+In other words, Nmap tries to connect to each specified TCP port, and determines whether the service is open by the response it receives.
+
+For example, if a port is closed, RFC 9293 states that:
+
+"... If the connection does not exist (CLOSED), then a reset is sent in response to any incoming segment except another reset. 
+A SYN segment that does not match an existing connection is rejected by this means."
+
+In other words, if Nmap sends a TCP request with the SYN flag set to a closed port, 
+the target server will respond with a TCP packet with the RST (Reset) flag set. 
+By this response, Nmap can establish that the port is closed.
+
+![vUQL9SK](https://github.com/schoto/THM-Nmap/assets/69323411/53a2068d-ad8b-421a-94b5-53f51237ecd2)
+
+If, however, the request is sent to an open port, the target will respond with a TCP packet with the SYN/ACK flags set. 
+Nmap then marks this port as being open (and completes the handshake by sending back a TCP packet with ACK set).
+
+-----------------------------------------------------------------------------------------------------------
+
+This is all well and good, however, there is a third possibility.
+
+What if the port is open, but hidden behind a firewall?
+
+Many firewalls are configured to simply drop incoming packets. 
+Nmap sends a TCP SYN request, and receives nothing back. 
+This indicates that the port is being protected by a firewall and thus the port is considered to be filtered.
+
+That said, it is very easy to configure a firewall to respond with a RST TCP packet. For example, in IPtables for Linux, a simple version of the command would be as follows:
+
+```iptables -I INPUT -p tcp --dport <port> -j REJECT --reject-with tcp-reset```
+
+This can make it extremely difficult (if not impossible) to get an accurate reading of the target(s).
+
+**Questions / Answers**
+
+Which RFC defines the appropriate behaviour for the TCP protocol?
+
+```RFC 9293```
+
+If a port is closed, which flag should the server send back to indicate this?
+
+```RST```
+
+
