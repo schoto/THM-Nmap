@@ -224,4 +224,6 @@ If a port is closed, which flag should the server send back to indicate this?
 
 ```RST```
 
+**SYN Scans**
+
 
