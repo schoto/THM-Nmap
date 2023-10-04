@@ -20,3 +20,13 @@ There are many categories available. Some useful categories include:
 
 ```discovery```:- Attempt to query running services for further information about the network (e.g. query an SNMP server).
 
+**Questions / Answers**
+
+What language are NSE scripts written in?
+
+```LUA```
+
+Which category of scripts would be a very bad idea to run in a production environment?
+
+```intrusive```
+
