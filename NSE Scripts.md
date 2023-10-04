@@ -30,3 +30,5 @@ Which category of scripts would be a very bad idea to run in a production enviro
 
 ```intrusive```
 
+**Working with the NSE**
+
