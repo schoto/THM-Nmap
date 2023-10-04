@@ -369,5 +369,10 @@ or
 nmap -sn 192.168.0.0/24
 ```
 
+The ```-sn``` switch tells Nmap not to scan any ports -- forcing it to rely primarily on ICMP echo packets (or ARP requests on a local network, if run with sudo or directly as the root user) to identify targets. In addition to the ICMP echo requests, the ```-sn``` switch will also cause nmap to send a TCP SYN packet to port 443 of the target, as well as a TCP ACK (or TCP SYN if not run as root) packet to port 80 of the target.
 
+**Question / Answer**
 
+How would you perform a ping sweep on the 172.16.x.x network (Netmask: 255.255.0.0) using Nmap? (CIDR notation)
+
+```nmap -sn 172.16.0.0/16```
