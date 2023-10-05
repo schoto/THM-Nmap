@@ -377,6 +377,8 @@ How would you perform a ping sweep on the 172.16.x.x network (Netmask: 255.255.0
 
 ```nmap -sn 172.16.0.0/16```
 
+<h2>NSE Scripts</h2>
+
 <h2>Overview</h2>
 
 The Nmap Scripting Engine (NSE) is an incredibly powerful addition to Nmap, extending its functionality quite considerably. 
