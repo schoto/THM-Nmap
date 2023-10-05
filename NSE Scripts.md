@@ -46,7 +46,6 @@ nmap -p 80 --script http-put --script-args http-put.url='/dav/shell.php',http-pu
 
 Note that the arguments are separated by commas, and connected to the corresponding script with periods (i.e.  ```<script-name>.<argument>)```.
 
-
-
+Nmap scripts come with built-in help menus, which can be accessed using nmap ```--script-help <script-name>```. This tends not to be as extensive as in the link given above, however, it can still be useful when working locally.
 
 
