@@ -429,4 +429,37 @@ Note that the arguments are separated by commas, and connected to the correspond
 
 Nmap scripts come with built-in help menus, which can be accessed using nmap ```--script-help <script-name>```. This tends not to be as extensive as in the link given above, however, it can still be useful when working locally.
 
+**Searching for scripts**
+
+Ok, so we know how to use the scripts in Nmap, but we don't yet know how to find these scripts.
+
+We have two options for this, which should ideally be used in conjunction with each other. The first is the page on the Nmap website (mentioned in the previous task) which contains a list of all official scripts. 
+The second is the local storage on your attacking machine. 
+Nmap stores its scripts on Linux at ```/usr/share/nmap/scripts```. All of the NSE scripts are stored in this directory by default -- this is where Nmap looks for scripts when you specify them.
+
+There are two ways to search for installed scripts. One is by using the ```/usr/share/nmap/scripts/script.db``` file. Despite the extension, this isn't actually a database so much as a formatted text file containing filenames and categories for each available script.
+
+![aJdVSAP](https://github.com/schoto/THM-Nmap/assets/69323411/e02bb930-6a5f-4503-8858-1834babf8c73)
+
+Nmap uses this file to keep track of (and utilise) scripts for the scripting engine; however, we can also grep through it to look for scripts. For example: ```grep "ftp" /usr/share/nmap/scripts/script.db```.
+
+![ijAhZsy](https://github.com/schoto/THM-Nmap/assets/69323411/386618ae-a256-4b34-8016-8ff07544a0b1)
+
+The second way to search for scripts is quite simply to use the ```ls``` command. For example, we could get the same results as in the previous screenshot by using ```ls -l /usr/share/nmap/scripts/*ftp*```:
+
+![7GV9Wzi](https://github.com/schoto/THM-Nmap/assets/69323411/d5c74390-baa7-4069-8577-12e7fc2497c2)
+
+Note the use of asterisks (```*```) on either side of the search term
+
+The same techniques can also be used to search for categories of script. For example:
+```grep "safe" /usr/share/nmap/scripts/script.db```
+
+![352GgTj](https://github.com/schoto/THM-Nmap/assets/69323411/b0c4d0f7-2410-4963-bebc-992ad89c104e)
+
+
+
+
+
+
+
 
