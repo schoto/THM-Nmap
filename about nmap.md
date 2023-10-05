@@ -456,6 +456,13 @@ The same techniques can also be used to search for categories of script. For exa
 
 ![352GgTj](https://github.com/schoto/THM-Nmap/assets/69323411/b0c4d0f7-2410-4963-bebc-992ad89c104e)
 
+**Installing New Scripts**
+
+We mentioned previously that the Nmap website contains a list of scripts, so, what happens if one of these is missing in the ```scripts``` directory locally?
+A standard ```sudo apt update && sudo apt install nmap``` should fix this; however, it's also possible to install the scripts manually by downloading the script from Nmap (```sudo wget -O /usr/share/nmap/scripts/<script-name>.nse https://svn.nmap.org/nmap/scripts/<script-name>.nse```). This must then be followed up with ```nmap --script-updatedb```, which updates the ```script.db``` file to contain the newly downloaded script.
+
+It's worth noting that you would require the same "updatedb" command if you were to make your own NSE script and add it into Nmap -- a more than manageable task with some basic knowledge of Lua!
+
 
 
 
