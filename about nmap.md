@@ -463,7 +463,7 @@ A standard ```sudo apt update && sudo apt install nmap``` should fix this; howev
 
 It's worth noting that you would require the same "updatedb" command if you were to make your own NSE script and add it into Nmap -- a more than manageable task with some basic knowledge of Lua!
 
-
+**Firewall Evasion**
 
 
 
